@@ -1,0 +1,29 @@
+{
+  "name": "tripplanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run build-css & nodemon -e html,css,js app.js",
+    "build-css": "node-sass -w -r assets/stylesheets -o public/stylesheets",
+    "db-init": "psql -f db-init.sql"
+  },
+  "author": "ayana@gracehopper.com",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "body-parser": "^1.13.3",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.3",
+    "jquery": "^2.2.3",
+    "morgan": "^1.6.1",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.0",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.4.1"
+  }
+}
