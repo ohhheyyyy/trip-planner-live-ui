@@ -1,14 +1,14 @@
-var Sequelize = require('sequelize'); 
+var Sequelize = require('sequelize');
+var db = require('./_db');
+var Place = require('./place');
 
-module.exports = function(db){
-  var Hotel = db.define('hotel', {
-    name: Sequelize.STRING,
-    num_stars: {
-      type: Sequelize.INTEGER,
-      validate: { min: 1, max: 5 }
-    },
-    amenities: Sequelize.STRING
-  });
+var Hotel = db.define('hotel', {
+  name: Sequelize.STRING,
+  num_stars: {
+    type: Sequelize.INTEGER,
+    validate: { min: 1, max: 5 }
+  },
+  amenities: Sequelize.STRING
+});
 
-  return Hotel; 
-}
+module.exports = Hotel;

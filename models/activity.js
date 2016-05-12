@@ -1,11 +1,10 @@
 var Sequelize = require('sequelize');
+var db = require('./_db');
+var Place = require('./place');
 
-module.exports = function(db){
-  var Activity = db.define('activity', {
-    name: Sequelize.STRING,
-    age_range: Sequelize.STRING
-  });
+var Activity = db.define('activity', {
+  name: Sequelize.STRING,
+  age_range: Sequelize.STRING
+});
 
-  return Activity; 
-}
-
+module.exports = Activity

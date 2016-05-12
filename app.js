@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 
-var db = require('./models').db;
+var db = require('./models');
 
 var app = express();
 

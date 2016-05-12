@@ -1,9 +1,9 @@
 var router = require('express').Router();
 var Promise = require('bluebird');
-var models = require('../models')
-var Hotel = models.Hotel;
-var Restaurant = models.Restaurant;
-var Activity = models.Activity;
+var models = require('../models');
+var Hotel = require('../models/hotel');
+var Restaurant = require('../models/restaurant');
+var Activity = require('../models/activity');
 
 router.get('/', function (req, res, next) {
   Promise.all([
