@@ -71,8 +71,7 @@ $(function initializeMap() {
 
     $('.hotel-button').on('click', function clickFunc() {
         var hotelDOM = $('#hotel-choices').val();
-        $('.hotel-selections').append('<div class="itinerary-item"> <span class="title">' + hotelDOM + '</span><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>');
-
+        $('.hotel-selections').append('<div class="itinerary-item day' + day + '"> <span class="title">' + hotelDOM + '</span><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>');
         var ourHotel;
         hotels.forEach(function(hotel) {
             if (hotel.name === hotelDOM) {
@@ -99,7 +98,7 @@ $(function initializeMap() {
         var restaurantDOM = $('#restaurant-choices').val();
         var restaurantDOMnoSpaces = restaurantDOM.split(' ').join('').replace("'", '');
 
-        $('.restautant-selections').append(`<div class="itinerary-item ${restaurantDOMnoSpaces}"> <span class="title">` + restaurantDOM + `</span><button class="btn btn-xs btn-danger remove btn-circle btn-${restaurantDOMnoSpaces}">x</button></div>`);
+        $('.restautant-selections').append(`<div class="itinerary-item ${restaurantDOMnoSpaces} day${day}"> <span class="title">` + restaurantDOM + `</span><button class="btn btn-xs btn-danger remove btn-circle btn-${restaurantDOMnoSpaces}">x</button></div>`);
         var ourRestaurant;
         restaurants.forEach(function(restaurant) {
             if (restaurant.name === restaurantDOM) {
@@ -127,7 +126,7 @@ $(function initializeMap() {
         var activityDOMnoSpaces = activityDOM.split(' ').join('').replace("'", '');
 
 
-        $('.activity-selections').append(`<div class="itinerary-item ${activityDOMnoSpaces}"> <span class="title">` + activityDOM + `</span><button class="btn btn-xs btn-danger remove btn-circle btn-${activityDOMnoSpaces}">x</button></div>`);
+        $('.activity-selections').append(`<div class="itinerary-item ${activityDOMnoSpaces} day${day}"> <span class="title">` + activityDOM + `</span><button class="btn btn-xs btn-danger remove btn-circle btn-${activityDOMnoSpaces}">x</button></div>`);
 
         var ourActivity;
         activities.forEach(function(activity) {
@@ -147,11 +146,34 @@ $(function initializeMap() {
         });
     });
 
-    var num = 1;
+    var num = 0;
+    var day;
     $('#day-add').on('click', function() {
-
-        $('#day-add').before('<button class="btn btn-circle day-btn">' + num + '</button>');
         num++;
+        $('#day-add').before(`<button id="day${num}" class="btn btn-circle day-btn">${num}</button>`);
+        day = $('#day' + num).text();
+
+        // console.log(day);
+        //  console.log(num);
+
+        // var theDayWeWantToShow =
+        $('.day-btn').on('click', function() {
+          if($(this).text() !== "+"){
+            day = $(this).text();
+            console.log(day);
+            $('.day'+day).show();
+            for(var i = 1; i <= num; i++){
+              if(i != day){
+              console.log("iterating", i)
+                $('.day'+i).hide();
+               }
+            }
+          }
+        });
+
+        // $('.day'+day).not(theDayWeWantToShow).css('display', "none");
+        
     });
+
 
 });

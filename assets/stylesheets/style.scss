@@ -11,6 +11,14 @@ body {
   min-width: -webkit-min-content;
 }
 
+.hide{
+  visibility: hidden;
+}
+
+.show{
+  visbility: visible;
+}
+
 #app {
   border-left: 2px solid lighten($medium-brown, 25%);
   border-right: 2px solid lighten($medium-brown, 25%);
